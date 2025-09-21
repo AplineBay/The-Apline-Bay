@@ -2,8 +2,11 @@ This is a repo pather to get games
 
 Sources:
 
-AsphaltGamesWorld [For Games from the Aphalt series] [Universal Platforms]: https://asphaltgamesworld.neocities.org/
+AsphaltGamesWorld [For Games from the Aphalt series] [Universal Platforms]: 
+https://asphaltgamesworld.neocities.org/
 
-Mackatana [Mac Games From Mac Gamers] [Platform: MACINTOSH]: Coming soon...
+Mackatana [Mac Games From Mac Gamers] [Platform: MACINTOSH]: 
+Coming soon...
 
-Winsoft [WinDows Game Library] [Platforms: Windows]: Coming soon...
+Winsoft [WinDows Game Library] [Platforms: Windows]: 
+Coming soon...
