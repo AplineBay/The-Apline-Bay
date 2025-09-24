@@ -5,7 +5,7 @@ Sources:
 AsphaltGamesWorld [For Games from the Aphalt series] [Universal Platforms]: 
 https://asphaltgamesworld.neocities.org/
 
-Mackatana (No Repo) [Mac Games From Mac Gamers] [Platform: MACINTOSH]: 
+Mackatana [Mac Games From Mac Gamers] [Platform: MACINTOSH]: 
 https://tin001blox.github.io/Mackatana/
 
 Winmag [Windows Game Library] [Platforms: Windows]: 
