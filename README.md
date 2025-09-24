@@ -11,7 +11,6 @@
 
 ## ⚠️ Known Issues  
 - **Jpatches currently don’t save.**  
-  **Temporary Fix:** Manually place your `.jpatch` files inside the `patches` folder located in the patcher directory.  
 
 ---
 
