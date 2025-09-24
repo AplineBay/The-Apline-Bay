@@ -9,4 +9,4 @@ Mackatana [Mac Games From Mac Gamers] [Platform: MACINTOSH]:
 https://tin001blox.github.io/Mackatana/
 
 Winmag [Windows Game Library] [Platforms: Windows]: 
-Coming soon...
+https://skiidub.github.io/WinMag/
