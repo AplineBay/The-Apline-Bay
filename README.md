@@ -16,12 +16,7 @@
 
 ## 🚀 Installation  
 
-1. Install [Node.js](https://nodejs.org/) for your system.  
-2. Download the ZIP file for your operating system.  
-3. Extract the contents.  
-4. **Windows:** Run `start.bat`.  
-5. **Mac:** Drag `start.sh` into the Terminal and press **Enter**.  
-6. 🎉 Enjoy a world of free games!  
+1. Just Run the .exe or .app and load a Jpatch!
 
 ---
 
