@@ -6,593 +6,272 @@
   <title>The Apline Bay</title>
 
   <style>
-    :root {
-      --bg-dark: #0a1828;
-      --glass-light: rgba(255, 255, 255, 0.15);
-      --glass-border: rgba(255, 255, 255, 0.25);
-      --text: #e8f4ff;
-      --accent: #4a9eff;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.4; }
-      50% { transform: translate3d(30px, -20px, 0); opacity: 0.6; }
+    :root {
+      --bg-primary: #000000;
+      --bg-secondary: #1a1a1a;
+      --bg-item: #2a2a2a;
+      --border-color: #3a3a3a;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --accent-blue: #33b5e5;
+      --accent-blue-dark: #0099cc;
+      --ios-blue: #007aff;
+      --ios-blue-dark: #0051d5;
+      --shadow: rgba(0, 0, 0, 0.5);
     }
 
-    @keyframes floatAlt {
-      0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.35; }
-      50% { transform: translate3d(-25px, 15px, 0); opacity: 0.5; }
-    }
-
-    @keyframes shimmer {
-      0% { background-position: -200% center; }
-      100% { background-position: 200% center; }
-    }
-
-    @keyframes orbGlow {
-      0%, 100% { box-shadow: 0 0 20px rgba(74, 158, 255, 0.5), 0 0 40px rgba(74, 158, 255, 0.3), inset 0 0 20px rgba(100, 180, 255, 0.4); }
-      50% { box-shadow: 0 0 30px rgba(74, 158, 255, 0.7), 0 0 60px rgba(74, 158, 255, 0.5), inset 0 0 30px rgba(100, 180, 255, 0.6); }
-    }
-
-    @keyframes ripple {
-      0% { transform: scale(0); opacity: 1; }
-      100% { transform: scale(2); opacity: 0; }
-    }
-
-    @keyframes progressBar {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-
-    html, body {
-      height: 100%;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(180deg, #0a1a2e 0%, #050d1a 50%, #020508 100%);
-      color: var(--text);
+    body {
+      font-family: 'Droid Sans', 'Roboto', Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
       overflow-x: hidden;
-      position: relative;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.4;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      top: -10%;
-      left: -10%;
-      width: 60%;
-      height: 80%;
-      background: radial-gradient(ellipse 800px 200px, rgba(80, 160, 240, 0.4) 0%, rgba(100, 180, 255, 0.2) 40%, transparent 70%);
-      filter: blur(50px);
-      z-index: 0;
-      animation: float 25s ease-in-out infinite;
-      pointer-events: none;
-      will-change: transform, opacity;
-    }
-
-    body::after {
-      content: '';
-      position: fixed;
-      bottom: -10%;
-      right: -10%;
-      width: 55%;
-      height: 70%;
-      background: radial-gradient(ellipse 700px 180px, rgba(100, 180, 255, 0.35) 0%, rgba(74, 158, 255, 0.15) 40%, transparent 70%);
-      filter: blur(50px);
-      z-index: 0;
-      animation: floatAlt 30s ease-in-out infinite;
-      pointer-events: none;
-      will-change: transform, opacity;
-    }
-
-    #spotlight {
-      position: fixed;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(120, 180, 255, 0.15) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 1;
-      transform: translate(-50%, -50%);
-      transition: opacity 0.3s;
-      filter: blur(40px);
-    }
-
+    /* Header - Balanced Android/iOS style */
     header {
-      padding: 28px 24px;
-      background: linear-gradient(180deg, 
-        rgba(55, 100, 155, 0.95) 0%, 
-        rgba(35, 80, 135, 1) 100%);
-      border-top: 2px solid var(--glass-border);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.6);
-      box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.7),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      backdrop-filter: blur(20px);
+      background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 50%, #1a1a1a 100%);
+      border-bottom: 1px solid #000;
+      box-shadow: 0 2px 4px var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 60%;
-      background: linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.18) 0%, 
-        transparent 100%);
-      pointer-events: none;
+    .header-content {
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: #fff;
-      text-shadow: 
-        2px 2px 0 rgba(255, 0, 100, 0.3),
-        -2px -2px 0 rgba(0, 200, 255, 0.3),
-        0 4px 8px rgba(0, 0, 0, 0.9),
-        0 0 30px rgba(100, 180, 255, 0.6);
-      letter-spacing: 2px;
-      position: relative;
-      display: inline-block;
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--text-primary);
+      letter-spacing: 0.5px;
     }
 
-    /* Loading progress bar */
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: rgba(20, 40, 70, 0.8);
-      z-index: 1000;
-      overflow: hidden;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .progress-bar.active {
-      opacity: 1;
-    }
-
-    .progress-bar-inner {
-      height: 100%;
-      background: linear-gradient(90deg, 
-        transparent 0%,
-        rgba(74, 158, 255, 0.8) 50%,
-        transparent 100%);
-      animation: progressBar 1.5s ease-in-out infinite;
-    }
-
+/* Stats bar */
     .stats-bar {
-      background: linear-gradient(180deg, 
-        rgba(30, 60, 100, 0.6) 0%, 
-        rgba(20, 45, 80, 0.7) 100%);
-      padding: 12px 24px;
-      border-bottom: 1px solid rgba(120, 180, 240, 0.3);
-      box-shadow: 
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        0 4px 16px rgba(0, 0, 0, 0.5);
-      position: relative;
-      z-index: 10;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 8px 16px;
       display: flex;
-      justify-content: center;
-      gap: 40px;
-      backdrop-filter: blur(15px);
-    }
-
-    .stats-bar::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.08) 0%, 
-        transparent 100%);
-      pointer-events: none;
-    }
-
-    .stat-item {
-      color: #b8d8ff;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      justify-content: space-around;
+      font-size: 12px;
+      color: var(--text-secondary);
     }
 
     .stat-item strong {
-      color: #e0f0ff;
-      font-size: 1.1rem;
-      margin-right: 6px;
-      text-shadow: 0 0 10px rgba(120, 200, 255, 0.5);
+      color: var(--ios-blue);
+      font-weight: bold;
+      margin-right: 4px;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: 32px auto;
-      padding: 24px;
-      position: relative;
-      z-index: 10;
-    }
-
+    /* Search and controls */
     .controls {
-      background: linear-gradient(180deg, 
-        rgba(45, 85, 140, 0.5) 0%, 
-        rgba(30, 65, 115, 0.55) 100%);
-      padding: 24px;
-      border: 1px solid rgba(140, 200, 255, 0.4);
-      border-top: 2px solid rgba(255, 255, 255, 0.3);
-      margin-bottom: 32px;
-      box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.7),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.5),
-        0 0 60px rgba(74, 158, 255, 0.1);
-      position: relative;
-      backdrop-filter: blur(20px);
-      border-radius: 2px;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px;
     }
 
-    .controls::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.12) 0%, 
-        transparent 100%);
-      pointer-events: none;
-      border-radius: 2px 2px 0 0;
-    }
-
-    .controls::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.1) 50%,
-        transparent 100%
-      );
-      background-size: 200% 100%;
-      animation: shimmer 3s ease-in-out infinite;
-      pointer-events: none;
-      opacity: 0.5;
-    }
-
-    .search-row {
+    .search-container {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
       display: flex;
-      gap: 12px;
       align-items: center;
-      position: relative;
-      z-index: 1;
+      padding: 8px 12px;
+      margin-bottom: 0;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+    }
+
+    .search-icon {
+      color: var(--text-secondary);
+      margin-right: 8px;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
     }
 
     #search {
-      padding: 16px 20px;
-      border: 1px solid rgba(100, 150, 220, 0.5);
-      border-top: 1px solid rgba(0, 0, 0, 0.7);
-      background: linear-gradient(180deg,
-        rgba(12, 30, 55, 0.9) 0%,
-        rgba(18, 38, 65, 0.85) 100%);
-      color: #e8f4ff;
-      flex: 1;
-      font-size: 16px;
-      box-shadow: 
-        inset 0 3px 10px rgba(0, 0, 0, 0.8),
-        inset 0 1px 0 rgba(0, 0, 0, 0.6),
-        0 1px 0 rgba(255, 255, 255, 0.2);
-      transition: all 0.3s;
-      backdrop-filter: blur(10px);
-      border-radius: 2px;
-    }
-
-    #search:focus {
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-size: 14px;
       outline: none;
-      border-color: rgba(120, 200, 255, 0.7);
-      box-shadow: 
-        inset 0 3px 10px rgba(0, 0, 0, 0.8),
-        0 0 0 3px rgba(74, 158, 255, 0.3),
-        0 0 30px rgba(74, 158, 255, 0.5),
-        0 4px 20px rgba(0, 0, 0, 0.6);
-      background: linear-gradient(180deg,
-        rgba(15, 35, 65, 0.95) 0%,
-        rgba(20, 42, 72, 0.9) 100%);
+      flex: 1;
+      font-family: inherit;
     }
 
     #search::placeholder {
-      color: rgba(232, 241, 255, 0.4);
+      color: var(--text-secondary);
+    }
+
+    .filter-star-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0 4px;
+      margin-left: 8px;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .filter-star-btn:hover {
+      color: var(--ios-blue);
+    }
+
+    .filter-star-btn.active {
+      color: var(--ios-blue);
+    }
+
+    .filter-star-btn:active {
+      transform: scale(0.9);
+    }
+
+    .filter-buttons {
+      display: none;
     }
 
     .filter-btn {
-      padding: 16px 28px;
-      border: 1px solid rgba(140, 200, 255, 0.5);
-      border-top: 2px solid rgba(255, 255, 255, 0.3);
-      background: linear-gradient(180deg, 
-        rgba(60, 110, 180, 0.6) 0%, 
-        rgba(40, 90, 160, 0.7) 100%);
-      color: #e8f4ff;
-      font-size: 16px;
-      font-weight: 600;
+      flex: 1;
+      background: linear-gradient(180deg, #5a5a5a 0%, #3a3a3a 100%);
+      border: 1px solid #4a4a4a;
+      border-radius: 5px;
+      color: var(--text-primary);
+      font-size: 13px;
+      font-weight: bold;
+      padding: 10px 16px;
       cursor: pointer;
-      box-shadow: 
-        0 4px 16px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
-      transition: all 0.3s;
-      position: relative;
-      white-space: nowrap;
-      backdrop-filter: blur(10px);
-      border-radius: 2px;
-      overflow: hidden;
+      transition: all 0.15s ease;
+      font-family: inherit;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
 
-    .filter-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 60%;
-      background: linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.15) 0%, 
-        transparent 100%);
-      pointer-events: none;
-    }
-
-    .filter-btn:hover {
-      transform: translateY(-3px);
-      border-color: rgba(180, 220, 255, 0.7);
-      box-shadow: 
-        0 6px 24px rgba(0, 0, 0, 0.6),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3),
-        0 0 30px rgba(74, 158, 255, 0.4);
-      background: linear-gradient(180deg, 
-        rgba(70, 125, 200, 0.7) 0%, 
-        rgba(50, 105, 180, 0.8) 100%);
+    .filter-btn:active {
+      background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
+      transform: translateY(1px);
     }
 
     .filter-btn.active {
-      background: linear-gradient(180deg, 
-        rgba(80, 145, 220, 0.8) 0%, 
-        rgba(60, 120, 195, 0.9) 100%);
-      border-color: rgba(180, 220, 255, 0.8);
-      box-shadow: 
-        0 4px 16px rgba(0, 0, 0, 0.6),
-        inset 0 1px 0 rgba(255, 255, 255, 0.35),
-        0 0 40px rgba(100, 180, 255, 0.6);
-      animation: orbGlow 2s ease-in-out infinite;
+      background: linear-gradient(180deg, var(--ios-blue) 0%, var(--ios-blue-dark) 100%);
+      border-color: var(--ios-blue-dark);
+      color: #fff;
+      box-shadow: 0 1px 3px rgba(0, 122, 255, 0.4);
     }
 
-    .ripple-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      overflow: hidden;
-      pointer-events: none;
-      border-radius: 2px;
+    /* Content container */
+    .container {
+      padding: 0;
+      will-change: contents;
     }
 
-    .ripple {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      transform: scale(0);
-      animation: ripple 0.6s ease-out;
-    }
-
-    /* Virtual scroll container */
+    /* Game list */
     #games {
-      position: relative;
       min-height: 200px;
     }
 
     .game-item {
-      background: linear-gradient(180deg, 
-        rgba(40, 75, 125, 0.4) 0%, 
-        rgba(28, 58, 105, 0.5) 100%);
-      margin: 14px 0;
-      padding: 20px 22px;
-      border: 1px solid rgba(140, 200, 255, 0.4);
-      border-top: 1px solid rgba(255, 255, 255, 0.3);
-      border-left: 4px solid rgba(100, 170, 255, 0.7);
-      box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.6),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+      background: var(--bg-item);
+      border-bottom: 1px solid var(--border-color);
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      will-change: transform;
-      position: relative;
-      backdrop-filter: blur(15px);
-      border-radius: 2px;
-      transform-style: preserve-3d;
+      transition: background 0.15s ease;
       contain: layout style paint;
     }
 
-    .game-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 60%;
-      background: linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.1) 0%, 
-        transparent 100%);
-      pointer-events: none;
-      border-radius: 2px 2px 0 0;
-    }
-
-    .game-item::after {
-      content: '';
-      position: absolute;
-      top: -1px;
-      left: -1px;
-      right: -1px;
-      bottom: -1px;
-      background: linear-gradient(135deg, 
-        rgba(120, 200, 255, 0) 0%,
-        rgba(120, 200, 255, 0.3) 50%,
-        rgba(120, 200, 255, 0) 100%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-      border-radius: 2px;
-    }
-
-    .game-item:hover {
-      transform: translateY(-4px) rotateX(2deg);
-      box-shadow: 
-        0 12px 32px rgba(0, 0, 0, 0.7),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25),
-        0 0 40px rgba(74, 158, 255, 0.3);
-      border-left-color: rgba(140, 210, 255, 1);
-      border-color: rgba(160, 210, 255, 0.6);
-    }
-
-    .game-item:hover::after {
-      opacity: 1;
-    }
-
-    .game-item.favorited {
-      border-left-color: rgba(255, 200, 80, 0.9);
-      box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.6),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15),
-        0 0 20px rgba(255, 180, 60, 0.2);
-    }
-
-    .game-item.favorited:hover {
-      border-left-color: rgba(255, 220, 100, 1);
-      box-shadow: 
-        0 12px 32px rgba(0, 0, 0, 0.7),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25),
-        0 0 40px rgba(255, 180, 60, 0.4);
+    .game-item:active {
+      background: #353535;
     }
 
     .game-item-header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      position: relative;
-      z-index: 1;
+      padding: 12px;
+      gap: 12px;
     }
 
-    .game-item-left {
+    /* Icon placeholder - iOS 6 rounded style */
+    .game-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
+      border: 1px solid #555;
+      border-radius: 10px;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
-      gap: 14px;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--text-secondary);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .game-info {
       flex: 1;
+      min-width: 0;
     }
 
     .game-item-title {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #f8fcff;
-      text-shadow: 
-        0 1px 3px rgba(0, 0, 0, 0.7),
-        0 0 15px rgba(150, 200, 255, 0.3);
+      font-size: 15px;
+      font-weight: bold;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .game-subtitle {
+      font-size: 12px;
+      color: var(--text-secondary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .favorite-btn {
-      background: linear-gradient(180deg, 
-        rgba(70, 125, 195, 0.6) 0%, 
-        rgba(50, 100, 170, 0.7) 100%);
-      border: 1px solid rgba(160, 210, 255, 0.5);
-      border-top: 2px solid rgba(255, 255, 255, 0.3);
-      padding: 8px 12px;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      color: var(--text-secondary);
       cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 
-        0 3px 12px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
-      position: relative;
-      font-size: 1.3rem;
-      line-height: 1;
-      will-change: transform;
-      backdrop-filter: blur(10px);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .favorite-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 60%;
-      background: linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.18) 0%, 
-        transparent 100%);
-      pointer-events: none;
-    }
-
-    .favorite-btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      border-color: rgba(180, 220, 255, 0.7);
-      box-shadow: 
-        0 6px 18px rgba(0, 0, 0, 0.6),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3),
-        0 0 25px rgba(74, 158, 255, 0.4);
+      padding: 4px 8px;
+      flex-shrink: 0;
+      transition: color 0.15s ease;
     }
 
     .favorite-btn.favorited {
-      background: linear-gradient(180deg, 
-        rgba(200, 145, 60, 0.7) 0%, 
-        rgba(170, 115, 40, 0.8) 100%);
-      border-color: rgba(255, 210, 100, 0.7);
-      box-shadow: 
-        0 3px 12px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25),
-        0 0 20px rgba(255, 180, 60, 0.4);
-      animation: orbGlow 3s ease-in-out infinite;
+      color: var(--ios-blue);
     }
 
-    .favorite-btn.favorited:hover {
-      border-color: rgba(255, 230, 120, 0.9);
-      box-shadow: 
-        0 6px 18px rgba(0, 0, 0, 0.6),
-        inset 0 1px 0 rgba(255, 255, 255, 0.35),
-        0 0 35px rgba(255, 180, 60, 0.6);
+    .favorite-btn:active {
+      transform: scale(0.9);
     }
 
-    .game-item-arrow {
-      font-size: 0.9rem;
-      color: #b8d8ff;
-      transition: transform 0.3s ease;
-      will-change: transform;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    .game-arrow {
+      font-size: 14px;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+      padding: 0 4px;
     }
 
-    .game-item.expanded .game-item-arrow {
-      transform: rotate(90deg);
-    }
-
+    /* Expandable content */
     .game-item-content {
       display: grid;
       grid-template-rows: 0fr;
-      transition: grid-template-rows 0.3s ease-out;
+      transition: grid-template-rows 0.2s ease;
       overflow: hidden;
     }
 
@@ -602,157 +281,144 @@
 
     .game-item-content-inner {
       overflow: hidden;
-      padding-top: 0;
-      transition: padding-top 0.3s ease-out;
-    }
-
-    .game-item.expanded .game-item-content-inner {
-      padding-top: 16px;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
     }
 
     .game-item-description {
-      margin: 12px 0 18px 0;
-      line-height: 1.65;
-      color: #d8ebff;
-      font-size: 0.96rem;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      padding: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-color);
     }
 
-    .versions-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
+    /* Versions list */
+    .versions-list {
+      padding: 8px;
     }
 
-    .version {
-      background: linear-gradient(180deg, 
-        rgba(55, 105, 175, 0.5) 0%, 
-        rgba(40, 85, 150, 0.6) 100%);
-      padding: 18px 20px;
-      border: 1px solid rgba(160, 210, 255, 0.4);
-      border-top: 2px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 
-        0 4px 18px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
-      transition: all 0.3s;
-      will-change: transform;
-      position: relative;
-      backdrop-filter: blur(12px);
-      border-radius: 2px;
+    .version-item {
+      background: var(--bg-item);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      margin-bottom: 8px;
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
 
-    .version::before {
-      content: '';
-      position: absolute;
+    .version-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .version-platform {
+      font-size: 13px;
+      font-weight: bold;
+      color: var(--text-primary);
+    }
+
+    .download-btn {
+      background: linear-gradient(180deg, var(--ios-blue) 0%, var(--ios-blue-dark) 100%);
+      border: 1px solid var(--ios-blue-dark);
+      border-radius: 5px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 6px 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.15s ease;
+      font-family: inherit;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .download-btn:active {
+      background: linear-gradient(180deg, var(--ios-blue-dark) 0%, #003db3 100%);
+      transform: translateY(1px);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Messages */
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    /* Loading indicator */
+    .loading-bar {
+      position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: 60%;
-      background: linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.12) 0%, 
-        transparent 100%);
-      pointer-events: none;
-      border-radius: 2px 2px 0 0;
+      height: 2px;
+      background: var(--bg-secondary);
+      z-index: 1000;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.2s;
     }
 
-    .version:hover {
-      transform: translateY(-4px) scale(1.02);
-      border-color: rgba(180, 220, 255, 0.6);
-      box-shadow: 
-        0 8px 24px rgba(0, 0, 0, 0.6),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3),
-        0 0 30px rgba(74, 158, 255, 0.4);
+    .loading-bar.active {
+      opacity: 1;
     }
 
-    .version strong {
-      color: #f8fcff;
-      font-size: 15px;
-      font-weight: 700;
-      display: block;
-      margin-bottom: 12px;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-      position: relative;
-      z-index: 1;
+    .loading-bar-inner {
+      height: 100%;
+      background: var(--ios-blue);
+      width: 30%;
+      animation: loading 1s ease-in-out infinite;
     }
 
-    a {
-      color: #a8d8ff;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.3s;
-      display: inline-block;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-      position: relative;
-      z-index: 1;
+    @keyframes loading {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(400%); }
     }
 
-    a:hover {
-      color: #e0f0ff;
-      text-shadow: 0 0 15px rgba(160, 210, 255, 0.7);
-      transform: translateX(2px);
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
     }
 
-    .no-results {
-      text-align: center;
-      padding: 80px 20px;
-      color: #ddeeff;
-      font-size: 1.2rem;
-      font-weight: 600;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
     }
 
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4a4a4a;
+    }
+
+    /* Mobile optimization */
     @media (max-width: 768px) {
-      .container {
-        padding: 16px;
-        margin: 20px auto;
+      .stats-bar {
+        flex-wrap: wrap;
+        gap: 8px;
       }
 
-      .title {
-        font-size: 1.9rem;
-      }
-
-      .versions-container {
-        grid-template-columns: 1fr;
-      }
-
-      .search-row {
+      .filter-buttons {
         flex-direction: column;
-      }
-
-      #search {
-        width: 100%;
       }
 
       .filter-btn {
         width: 100%;
       }
-
-      .stats-bar {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .game-item:hover {
-        transform: translateY(-2px);
-      }
     }
 
+    /* Disable animations on low-end devices */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body::before, body::after {
-        display: none;
-      }
-      #spotlight {
-        display: none;
       }
     }
   </style>
@@ -760,44 +426,47 @@
 
 <body>
 
-<div id="spotlight"></div>
-<div class="progress-bar" id="progressBar">
-  <div class="progress-bar-inner"></div>
+<div class="loading-bar" id="loadingBar">
+  <div class="loading-bar-inner"></div>
 </div>
 
 <header>
-  <div class="title">The Apline Bay</div>
+  <div class="header-content">
+    <div class="title">The Apline Bay</div>
+  </div>
+  <div class="stats-bar">
+    <div class="stat-item">
+      <strong id="totalGames">0</strong> Games
+    </div>
+    <div class="stat-item">
+      <strong id="favoritesCount">0</strong> Favorites
+    </div>
+  </div>
 </header>
 
-<div class="stats-bar">
-  <div class="stat-item">
-    <strong id="totalGames">0</strong> Total Games
-  </div>
-  <div class="stat-item">
-    <strong id="favoritesCount">0</strong> Favorites
+<div class="controls">
+  <div class="search-container">
+    <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="10.5" y1="10.5" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <input type="text" id="search" placeholder="Search games..." />
+    <button class="filter-star-btn" id="favoritesFilter" title="Show favorites">☆</button>
   </div>
 </div>
 
 <div class="container">
-  <div class="controls">
-    <div class="search-row">
-      <input type="text" id="search" placeholder="Search games..." />
-      <button class="filter-btn" id="favoritesFilter">
-        <div class="ripple-container"></div>
-        ★ Show Favorites
-      </button>
-    </div>
-  </div>
   <div id="games"></div>
 </div>
 
 <script>
 (function(){
+  'use strict';
+  
   const container = document.getElementById('games');
   const search = document.getElementById('search');
   const favoritesFilter = document.getElementById('favoritesFilter');
-  const spotlight = document.getElementById('spotlight');
-  const progressBar = document.getElementById('progressBar');
+  const loadingBar = document.getElementById('loadingBar');
   const totalGamesEl = document.getElementById('totalGames');
   const favoritesCountEl = document.getElementById('favoritesCount');
   
@@ -805,69 +474,26 @@
   let searchIndex = null;
   let favorites = new Set();
   let showOnlyFavorites = false;
-  
-  // Optimized DOM pool for recycling elements
-  const domPool = {
-    gameItems: [],
-    versions: []
-  };
-
-  // Mouse spotlight (throttled for performance)
-  let rafId = null;
-  let mouseX = 0, mouseY = 0;
-  
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    if (!rafId) {
-      rafId = requestAnimationFrame(() => {
-        spotlight.style.left = mouseX + 'px';
-        spotlight.style.top = mouseY + 'px';
-        rafId = null;
-      });
-    }
-  });
-
-  // Ripple effect
-  function createRipple(e, button) {
-    const rippleContainer = button.querySelector('.ripple-container');
-    if (!rippleContainer) return;
-
-    const rect = button.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    const x = e.clientX - rect.left - size / 2;
-    const y = e.clientY - rect.top - size / 2;
-
-    const ripple = document.createElement('div');
-    ripple.className = 'ripple';
-    ripple.style.width = ripple.style.height = size + 'px';
-    ripple.style.left = x + 'px';
-    ripple.style.top = y + 'px';
-
-    rippleContainer.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 600);
-  }
+  let currentExpandedGame = null;
 
   // Build search index for faster searches
   function buildSearchIndex() {
     searchIndex = dataCache.map(game => ({
       name: game.name.toLowerCase(),
-      description: game.description?.toLowerCase() || '',
-      platforms: game.versions?.map(v => v.platform.toLowerCase()).join(' ') || '',
-      tags: game.versions?.flatMap(v => v.tags || []).map(t => t.toLowerCase()).join(' ') || '',
+      description: (game.description || '').toLowerCase(),
+      platforms: (game.versions || []).map(v => v.platform.toLowerCase()).join(' '),
       original: game
     }));
   }
 
-  // Optimized search with index
+  // Optimized search
   function fastSearch(query) {
     if (!query) return [];
     
     const terms = query.toLowerCase().split(' ').filter(Boolean);
     
     return searchIndex.filter(item => {
-      const searchText = `${item.name} ${item.description} ${item.platforms} ${item.tags}`;
+      const searchText = item.name + ' ' + item.description + ' ' + item.platforms;
       return terms.every(term => searchText.includes(term));
     }).map(item => item.original);
   }
@@ -885,7 +511,7 @@
         updateStats();
       }
     } catch (err) {
-      console.log('No favorites found');
+      // No favorites yet
     }
   }
 
@@ -911,39 +537,25 @@
     apply();
   }
 
-  function showMessage(msg){
-    container.innerHTML = `<div class="no-results">${msg}</div>`;
+  function showMessage(msg) {
+    container.innerHTML = '<div class="no-results">' + msg + '</div>';
   }
 
-  // Debounce with leading edge for instant feedback
+  // Simple debounce
   function debounce(func, wait) {
     let timeout;
-    let lastCall = 0;
-    
     return function(...args) {
-      const now = Date.now();
-      const timeSinceLastCall = now - lastCall;
-      
       clearTimeout(timeout);
-      
-      if (timeSinceLastCall >= wait) {
-        lastCall = now;
-        func(...args);
-      } else {
-        timeout = setTimeout(() => {
-          lastCall = Date.now();
-          func(...args);
-        }, wait - timeSinceLastCall);
-      }
+      timeout = setTimeout(() => func(...args), wait);
     };
   }
 
-  // Optimized render with DOM recycling
-  function render(list){
-    if(!list.length){
+  // Render games list
+  function render(list) {
+    if (!list.length) {
       const query = search.value.trim();
       if (showOnlyFavorites && favorites.size === 0) {
-        showMessage('No favorite games yet. Click the ★ button on games to favorite them!');
+        showMessage('No favorites yet. Tap ★ to add games to favorites.');
       } else if (showOnlyFavorites) {
         showMessage('No favorite games match your search.');
       } else if (query === '') {
@@ -954,110 +566,86 @@
       return;
     }
 
-    // Use requestAnimationFrame for smooth rendering
-    requestAnimationFrame(() => {
-      const fragment = document.createDocumentFragment();
+    // Build HTML string for better performance
+    const html = list.map(game => createGameHTML(game)).join('');
+    container.innerHTML = html;
+    
+    // Attach event listeners
+    attachEventListeners();
+  }
 
-      list.forEach(game => {
-        const gameItem = createGameElement(game);
-        fragment.appendChild(gameItem);
+  function createGameHTML(game) {
+    const isFavorited = favorites.has(game.name);
+    const firstLetter = game.name.charAt(0).toUpperCase();
+    const versionCount = game.versions ? game.versions.length : 0;
+    const subtitle = versionCount + ' version' + (versionCount !== 1 ? 's' : '');
+    
+    let versionsHTML = '';
+    if (game.versions && game.versions.length) {
+      versionsHTML = '<div class="versions-list">' +
+        game.versions.map(v => 
+          '<div class="version-item">' +
+            '<span class="version-platform">' + escapeHTML(v.platform) + '</span>' +
+            '<a href="' + escapeHTML(v.url) + '" class="download-btn" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Download</a>' +
+          '</div>'
+        ).join('') +
+      '</div>';
+    }
+    
+    return '<div class="game-item" data-name="' + escapeHTML(game.name) + '">' +
+      '<div class="game-item-header">' +
+        '<div class="game-icon">' + firstLetter + '</div>' +
+        '<div class="game-info">' +
+          '<div class="game-item-title">' + escapeHTML(game.name) + '</div>' +
+          '<div class="game-subtitle">' + subtitle + '</div>' +
+        '</div>' +
+        '<button class="favorite-btn' + (isFavorited ? ' favorited' : '') + '" data-game="' + escapeHTML(game.name) + '" title="' + (isFavorited ? 'Remove from favorites' : 'Add to favorites') + '">' +
+          (isFavorited ? '★' : '☆') +
+        '</button>' +
+        '<span class="game-arrow">›</span>' +
+      '</div>' +
+      '<div class="game-item-content">' +
+        '<div class="game-item-content-inner">' +
+          (game.description ? '<div class="game-item-description">' + escapeHTML(game.description) + '</div>' : '') +
+          versionsHTML +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function escapeHTML(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function attachEventListeners() {
+    // Game item clicks
+    container.querySelectorAll('.game-item').forEach(item => {
+      const header = item.querySelector('.game-item-header');
+      header.addEventListener('click', function(e) {
+        if (e.target.closest('.favorite-btn')) return;
+        
+        // Close previously expanded item
+        if (currentExpandedGame && currentExpandedGame !== item) {
+          currentExpandedGame.classList.remove('expanded');
+        }
+        
+        item.classList.toggle('expanded');
+        currentExpandedGame = item.classList.contains('expanded') ? item : null;
       });
+    });
 
-      container.textContent = '';
-      container.appendChild(fragment);
+    // Favorite buttons
+    container.querySelectorAll('.favorite-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const gameName = this.getAttribute('data-game');
+        toggleFavorite(gameName, e);
+      });
     });
   }
 
-  function createGameElement(game){
-    const gameItem = document.createElement('div');
-    gameItem.className = 'game-item';
-    const isFavorited = favorites.has(game.name);
-    if (isFavorited) {
-      gameItem.classList.add('favorited');
-    }
-
-    const gameHeader = document.createElement('div');
-    gameHeader.className = 'game-item-header';
-
-    const gameLeft = document.createElement('div');
-    gameLeft.className = 'game-item-left';
-
-    const favoriteBtn = document.createElement('button');
-    favoriteBtn.className = 'favorite-btn';
-    favoriteBtn.textContent = isFavorited ? '★' : '☆';
-    if (isFavorited) {
-      favoriteBtn.classList.add('favorited');
-    }
-    favoriteBtn.onclick = (e) => toggleFavorite(game.name, e);
-    favoriteBtn.title = isFavorited ? 'Remove from favorites' : 'Add to favorites';
-
-    const favoriteRipple = document.createElement('div');
-    favoriteRipple.className = 'ripple-container';
-    favoriteBtn.appendChild(favoriteRipple);
-
-    const gameTitle = document.createElement('div');
-    gameTitle.className = 'game-item-title';
-    gameTitle.textContent = game.name;
-
-    const gameArrow = document.createElement('span');
-    gameArrow.className = 'game-item-arrow';
-    gameArrow.textContent = '▶';
-
-    gameLeft.append(favoriteBtn, gameTitle);
-    gameHeader.append(gameLeft, gameArrow);
-    gameItem.appendChild(gameHeader);
-
-    const gameContent = document.createElement('div');
-    gameContent.className = 'game-item-content';
-
-    const gameContentInner = document.createElement('div');
-    gameContentInner.className = 'game-item-content-inner';
-
-    if (game.description) {
-      const desc = document.createElement('p');
-      desc.className = 'game-item-description';
-      desc.textContent = game.description;
-      gameContentInner.appendChild(desc);
-    }
-
-    if (game.versions?.length) {
-      const versionsContainer = document.createElement('div');
-      versionsContainer.className = 'versions-container';
-
-      game.versions.forEach(v => {
-        const ver = document.createElement('div');
-        ver.className = 'version';
-
-        const platform = document.createElement('strong');
-        platform.textContent = v.platform;
-
-        const link = document.createElement('a');
-        link.href = v.url;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.textContent = 'Download';
-        link.onclick = e => e.stopPropagation();
-
-        ver.append(platform, link);
-        versionsContainer.appendChild(ver);
-      });
-
-      gameContentInner.appendChild(versionsContainer);
-    }
-
-    gameContent.appendChild(gameContentInner);
-    gameItem.appendChild(gameContent);
-
-    gameHeader.onclick = (e) => {
-      if (e.target !== favoriteBtn && !favoriteBtn.contains(e.target)) {
-        gameItem.classList.toggle('expanded');
-      }
-    };
-
-    return gameItem;
-  }
-
-  function apply(){
+  function apply() {
     const query = search.value.trim();
     
     let filtered = dataCache;
@@ -1076,22 +664,28 @@
     render(filtered);
   }
 
-  const debouncedApply = debounce(apply, 100);
+  const debouncedApply = debounce(apply, 150);
 
-  favoritesFilter.onclick = (e) => {
-    createRipple(e, favoritesFilter);
+  favoritesFilter.onclick = () => {
     showOnlyFavorites = !showOnlyFavorites;
-    favoritesFilter.classList.toggle('active', showOnlyFavorites);
-    favoritesFilter.innerHTML = `<div class="ripple-container"></div>${showOnlyFavorites ? '★ Show All' : '★ Show Favorites'}`;
+    if (showOnlyFavorites) {
+      favoritesFilter.classList.add('active');
+      favoritesFilter.textContent = '★';
+      favoritesFilter.title = 'Show all games';
+    } else {
+      favoritesFilter.classList.remove('active');
+      favoritesFilter.textContent = '☆';
+      favoritesFilter.title = 'Show favorites';
+    }
     apply();
   };
 
   showMessage('Loading games...');
 
-  // Progressive loading with visual feedback
+  // Load games from JSON files
   async function loadAllGames() {
     try {
-      progressBar.classList.add('active');
+      loadingBar.classList.add('active');
       await loadFavorites();
       
       const manifestResponse = await fetch('Rom 47/manifest.json');
@@ -1104,34 +698,29 @@
         jsonFiles = ['pak1.json', 'pak2.json', 'pak3.json', 'pak4.json', 'pak5.json'];
       }
       
-      // Load files progressively
-      let loadedCount = 0;
+      // Load all files
       const loadPromises = jsonFiles.map(async file => {
         try {
-          const response = await fetch(`Rom 47/${file}`);
+          const response = await fetch('Rom 47/' + file);
           if (response.ok) {
-            const games = await response.json();
-            dataCache.push(...games);
-            loadedCount++;
-            
-            // Update UI as each file loads
-            if (loadedCount === 1) {
-              buildSearchIndex();
-              updateStats();
-              showMessage('Start typing to search for games...');
-            }
+            return await response.json();
           }
         } catch (err) {
-          console.warn(`Failed to load ${file}:`, err);
+          console.warn('Failed to load ' + file);
+        }
+        return [];
+      });
+      
+      const results = await Promise.all(loadPromises);
+      results.forEach(games => {
+        if (games && games.length) {
+          dataCache.push(...games);
         }
       });
       
-      await Promise.all(loadPromises);
-      
-      // Final index rebuild with all data
       buildSearchIndex();
       updateStats();
-      progressBar.classList.remove('active');
+      loadingBar.classList.remove('active');
       
       if (dataCache.length === 0) {
         showMessage('No games found. Make sure JSON files are in the "Rom 47" folder.');
@@ -1139,21 +728,17 @@
         showMessage('Start typing to search for games...');
       }
     } catch (err) {
-      progressBar.classList.remove('active');
-      showMessage('Failed to load games from Rom 47 folder.');
+      loadingBar.classList.remove('active');
+      showMessage('Failed to load games.');
       console.error(err);
     }
   }
 
   loadAllGames();
   search.oninput = debouncedApply;
-  
-  // Cleanup on page unload
-  window.addEventListener('beforeunload', () => {
-    if (rafId) cancelAnimationFrame(rafId);
-  });
 })();
 </script>
 
 </body>
 </html>
+
