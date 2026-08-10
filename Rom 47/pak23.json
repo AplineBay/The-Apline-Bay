@@ -4,5 +4,11 @@
         "name": "Elden Ring",
         "description": "The new fantasy action RPG. Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between. WRATH: Aeon of Ruin",
         "versions": []
+    },
+    {
+        "slug": "007-first-light",
+        "name": "007 First Light",
+        "description": "Follow James Bond as a young, resourceful and sometimes reckless recruit in MI6’s training program, and discover an origin story of the world’s most famous spy.",
+        "versions": []
     }
 ]
