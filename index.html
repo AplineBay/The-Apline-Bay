@@ -12,103 +12,108 @@
       padding: 0;
     }
 
+    :root {
+      --space-xs: 8px;
+      --space-sm: 12px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --content-width: 680px;
+    }
+
     body {
-      font-family: 'Droid Sans', 'Roboto', Arial, sans-serif;
-      background: #000000;
-      color: #ffffff;
+      font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #0d0d0d;
+      color: #f2f2f2;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Header - Android Market style with gradient */
+    /* Header — flat, quiet */
     header {
-      background: -webkit-linear-gradient(top, #3a3a3a 0%, #1f1f1f 50%, #0a0a0a 100%);
-      background: linear-gradient(180deg, #3a3a3a 0%, #1f1f1f 50%, #0a0a0a 100%);
-      border-bottom: 1px solid #000000;
-      -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      background: #0d0d0d;
+      border-bottom: 1px solid #1f1f1f;
       position: -webkit-sticky;
       position: sticky;
       top: 0;
       z-index: 100;
-      padding: 0;
     }
 
     .header-content {
-      padding: 14px 12px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: var(--space-md);
       display: flex;
       -webkit-box-align: center;
       align-items: center;
-      gap: 10px;
-      background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+      gap: var(--space-sm);
     }
 
     .title {
-      font-size: 22px;
-      font-weight: bold;
-      color: #ffffff;
+      font-size: 19px;
+      font-weight: 600;
+      color: #f2f2f2;
       flex: 1;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
     }
 
     .header-icon {
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
       cursor: pointer;
       flex-shrink: 0;
       padding: 4px;
-      -webkit-transition: opacity 0.2s ease;
-      transition: opacity 0.2s ease;
-      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
+      opacity: 0.85;
+      -webkit-transition: opacity 0.15s ease;
+      transition: opacity 0.15s ease;
     }
 
     .header-icon:active {
-      opacity: 0.7;
+      opacity: 0.5;
     }
 
-    /* Search bar with gradient */
+    /* Search bar */
     .search-bar {
-      background: -webkit-linear-gradient(top, #0a0a0a 0%, #000000 100%);
-      background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
-      padding: 0 12px 12px 12px;
-      border-bottom: 1px solid #1a1a1a;
+      background: #0d0d0d;
+      padding: 0 var(--space-md) var(--space-md) var(--space-md);
+      border-bottom: 1px solid #1f1f1f;
       display: none;
-      -webkit-box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4);
-      box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4);
     }
 
     .search-bar.active {
       display: block;
+      padding-top: var(--space-sm);
     }
 
     .search-container {
-      background: -webkit-linear-gradient(top, #0d0d0d 0%, #1a1a1a 100%);
-      background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
-      border: 1px solid #2a2a2a;
-      -webkit-border-radius: 3px;
-      border-radius: 3px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      background: #161616;
+      border: 1px solid #262626;
+      border-radius: 8px;
       display: flex;
       -webkit-box-align: center;
       align-items: center;
-      padding: 8px 10px;
-      -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.05);
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.05);
+      padding: var(--space-sm);
+      -webkit-transition: border-color 0.15s ease;
+      transition: border-color 0.15s ease;
+    }
+
+    .search-container:focus-within {
+      border-color: #4da3ff;
     }
 
     .search-icon {
-      color: #666666;
+      color: #6b6b6b;
       margin-right: 8px;
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       flex-shrink: 0;
     }
 
     #search {
       background: transparent;
       border: none;
-      color: #ffffff;
+      color: #f2f2f2;
       font-size: 14px;
       outline: none;
       flex: 1;
@@ -116,14 +121,14 @@
     }
 
     #search::-webkit-input-placeholder {
-      color: #666666;
+      color: #6b6b6b;
     }
 
     .filter-star-btn {
       background: transparent;
       border: none;
-      color: #666666;
-      font-size: 20px;
+      color: #6b6b6b;
+      font-size: 19px;
       cursor: pointer;
       padding: 0 4px;
       margin-left: 6px;
@@ -134,90 +139,83 @@
     }
 
     .filter-star-btn.active {
-      color: #33b5e5;
+      color: #4da3ff;
     }
 
-    /* Stats bar with gradient */
+    /* Stats bar */
     .stats-bar {
-      background: -webkit-linear-gradient(top, #141414 0%, #0a0a0a 100%);
-      background: linear-gradient(180deg, #141414 0%, #0a0a0a 100%);
-      padding: 10px 12px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: var(--space-sm) var(--space-md);
       display: flex;
-      -webkit-box-pack: space-around;
-      justify-content: space-around;
+      -webkit-box-pack: start;
+      justify-content: flex-start;
+      gap: var(--space-lg);
       font-size: 12px;
-      color: #888888;
-      border-bottom: 1px solid #000000;
-      border-top: 1px solid #1f1f1f;
-      -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      color: #7a7a7a;
+      border-bottom: 1px solid #1a1a1a;
     }
 
     .stat-item strong {
-      color: #33b5e5;
-      font-weight: bold;
+      color: #f2f2f2;
+      font-weight: 600;
       margin-right: 4px;
-      text-shadow: 0 0 8px rgba(51, 181, 229, 0.4);
     }
 
-    /* Content with subtle gradient */
+    /* Content */
     .container {
-      background: -webkit-linear-gradient(top, #050505 0%, #000000 100%);
-      background: linear-gradient(180deg, #050505 0%, #000000 100%);
+      background: #0d0d0d;
     }
 
     #games {
+      max-width: var(--content-width);
+      margin: 0 auto;
       min-height: 200px;
     }
 
-    /* Game list item with depth */
+    /* Game list item — flat row, no cards, no shadows */
     .game-item {
-      background: #000000;
-      border-bottom: 1px solid #0a0a0a;
-      border-top: 1px solid #1a1a1a;
+      background: #0d0d0d;
+      border-bottom: 1px solid #1a1a1a;
       cursor: pointer;
-      -webkit-transition: background 0.15s ease;
-      transition: background 0.15s ease;
-    }
-
-    .game-item:first-child {
-      border-top: none;
+      -webkit-transition: background 0.12s ease;
+      transition: background 0.12s ease;
     }
 
     .game-item:active {
-      background: -webkit-linear-gradient(top, #0a0a0a 0%, #050505 100%);
-      background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+      background: #141414;
+    }
+
+    @media (hover: hover) {
+      .game-item:hover {
+        background: #121212;
+      }
     }
 
     .game-item-header {
       display: flex;
       -webkit-box-align: center;
       align-items: center;
-      padding: 12px;
-      gap: 12px;
+      padding: var(--space-sm) var(--space-md);
+      gap: var(--space-sm);
     }
 
-    /* App icon with gradient and depth */
+    /* App icon — flat, no gradients */
     .game-icon {
-      width: 48px;
-      height: 48px;
-      background: -webkit-linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #0d0d0d 100%);
-      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #0d0d0d 100%);
-      border: 1px solid #333333;
-      -webkit-border-radius: 4px;
-      border-radius: 4px;
+      width: 42px;
+      height: 42px;
+      background: #1c1c1c;
+      border: 1px solid #262626;
+      border-radius: 8px;
       flex-shrink: 0;
       display: flex;
       -webkit-box-align: center;
       align-items: center;
       -webkit-box-pack: center;
       justify-content: center;
-      font-size: 22px;
-      color: #666666;
-      font-weight: bold;
-      -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+      font-size: 17px;
+      color: #9a9a9a;
+      font-weight: 600;
     }
 
     .game-info {
@@ -226,19 +224,18 @@
     }
 
     .game-item-title {
-      font-size: 16px;
-      font-weight: normal;
-      color: #ffffff;
+      font-size: 15px;
+      font-weight: 500;
+      color: #f2f2f2;
       margin-bottom: 2px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
     }
 
     .game-subtitle {
-      font-size: 11px;
-      color: #666666;
+      font-size: 12px;
+      color: #7a7a7a;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -248,36 +245,33 @@
       display: flex;
       -webkit-box-align: center;
       align-items: center;
-      gap: 4px;
+      gap: 2px;
     }
 
     .favorite-btn {
       background: transparent;
       border: none;
-      font-size: 22px;
-      color: #444444;
+      font-size: 20px;
+      color: #3d3d3d;
       cursor: pointer;
-      padding: 4px 6px;
+      padding: var(--space-xs);
       flex-shrink: 0;
-      -webkit-transition: all 0.2s ease;
-      transition: all 0.2s ease;
+      -webkit-transition: color 0.15s ease;
+      transition: color 0.15s ease;
       line-height: 1;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
     }
 
     .favorite-btn.favorited {
-      color: #33b5e5;
-      text-shadow: 0 0 8px rgba(51, 181, 229, 0.6), 0 0 12px rgba(51, 181, 229, 0.4), 0 1px 2px rgba(0, 0, 0, 0.8);
+      color: #4da3ff;
     }
 
     .favorite-btn:active {
-      -webkit-transform: scale(0.9);
-      transform: scale(0.9);
+      opacity: 0.6;
     }
 
     .game-arrow {
-      font-size: 14px;
-      color: #444444;
+      font-size: 13px;
+      color: #3d3d3d;
       flex-shrink: 0;
       padding: 0 2px;
       line-height: 1;
@@ -287,8 +281,8 @@
     .game-item-content {
       display: grid;
       grid-template-rows: 0fr;
-      -webkit-transition: grid-template-rows 0.2s ease;
-      transition: grid-template-rows 0.2s ease;
+      -webkit-transition: grid-template-rows 0.18s ease;
+      transition: grid-template-rows 0.18s ease;
       overflow: hidden;
     }
 
@@ -298,43 +292,34 @@
 
     .game-item-content-inner {
       overflow: hidden;
-      background: -webkit-linear-gradient(top, #0d0d0d 0%, #050505 100%);
-      background: linear-gradient(180deg, #0d0d0d 0%, #050505 100%);
-      border-top: 1px solid #000000;
-      -webkit-box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
-      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+      background: #111111;
+      border-top: 1px solid #1a1a1a;
     }
 
     .game-item-description {
-      padding: 12px;
+      padding: var(--space-md);
       font-size: 13px;
-      line-height: 1.5;
-      color: #aaaaaa;
-      border-bottom: 1px solid #0a0a0a;
+      line-height: 1.55;
+      color: #a3a3a3;
+      border-bottom: 1px solid #1a1a1a;
     }
 
-    /* Versions list with gradient */
+    /* Versions list — flat rows */
     .versions-list {
-      padding: 12px;
-      background: -webkit-linear-gradient(top, #0a0a0a 0%, #000000 100%);
-      background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+      padding: var(--space-sm) var(--space-md);
     }
 
     .version-item {
-      background: -webkit-linear-gradient(top, #1f1f1f 0%, #141414 100%);
-      background: linear-gradient(180deg, #1f1f1f 0%, #141414 100%);
-      border: 1px solid #2a2a2a;
-      -webkit-border-radius: 3px;
-      border-radius: 3px;
-      margin-bottom: 8px;
-      padding: 10px 12px;
+      background: transparent;
+      border: 1px solid #232323;
+      border-radius: 6px;
+      margin-bottom: var(--space-xs);
+      padding: var(--space-sm);
       display: flex;
       -webkit-box-pack: justify;
       justify-content: space-between;
       -webkit-box-align: center;
       align-items: center;
-      -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.03);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.03);
     }
 
     .version-item:last-child {
@@ -343,58 +328,53 @@
 
     .version-platform {
       font-size: 13px;
-      font-weight: normal;
-      color: #dddddd;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      font-weight: 500;
+      color: #d0d0d0;
     }
 
-    /* Android Market download button with gradient and glow */
+    /* Download button — one flat accent, no glow */
     .download-btn {
-      background: -webkit-linear-gradient(top, #4dc5ea 0%, #33b5e5 50%, #1fa3d1 100%);
-      background: linear-gradient(180deg, #4dc5ea 0%, #33b5e5 50%, #1fa3d1 100%);
-      border: 1px solid #0d8ab8;
-      -webkit-border-radius: 3px;
-      border-radius: 3px;
-      color: #ffffff;
+      background: #4da3ff;
+      border: none;
+      border-radius: 6px;
+      color: #0d0d0d;
       font-size: 13px;
-      font-weight: bold;
-      padding: 7px 18px;
+      font-weight: 600;
+      padding: 6px 16px;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-      -webkit-transition: all 0.15s ease;
-      transition: all 0.15s ease;
+      -webkit-transition: opacity 0.15s ease;
+      transition: opacity 0.15s ease;
       font-family: inherit;
-      -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 8px rgba(51, 181, 229, 0.3);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 8px rgba(51, 181, 229, 0.3);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     }
 
     .download-btn:active {
-      background: -webkit-linear-gradient(top, #33b5e5 0%, #1fa3d1 50%, #0d8ab8 100%);
-      background: linear-gradient(180deg, #33b5e5 0%, #1fa3d1 50%, #0d8ab8 100%);
-      -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(0, 0, 0, 0.2);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(0, 0, 0, 0.2);
-      -webkit-transform: translateY(1px);
-      transform: translateY(1px);
+      opacity: 0.75;
+    }
+
+    @media (hover: hover) {
+      .download-btn:hover {
+        opacity: 0.88;
+      }
     }
 
     /* Messages */
     .no-results {
       text-align: center;
       padding: 60px 20px;
-      color: #666666;
+      color: #6b6b6b;
       font-size: 14px;
     }
 
-    /* Loading bar with glow */
+    /* Loading bar — simple, no glow */
     .loading-bar {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
-      background: #0a0a0a;
+      height: 2px;
+      background: #1a1a1a;
       z-index: 1000;
       overflow: hidden;
       opacity: 0;
@@ -408,13 +388,10 @@
 
     .loading-bar-inner {
       height: 100%;
-      background: -webkit-linear-gradient(left, #1fa3d1 0%, #33b5e5 50%, #4dc5ea 100%);
-      background: linear-gradient(90deg, #1fa3d1 0%, #33b5e5 50%, #4dc5ea 100%);
-      width: 35%;
+      background: #4da3ff;
+      width: 30%;
       -webkit-animation: loading 1s ease-in-out infinite;
       animation: loading 1s ease-in-out infinite;
-      -webkit-box-shadow: 0 0 10px rgba(51, 181, 229, 0.6), 0 0 20px rgba(51, 181, 229, 0.3);
-      box-shadow: 0 0 10px rgba(51, 181, 229, 0.6), 0 0 20px rgba(51, 181, 229, 0.3);
     }
 
     @-webkit-keyframes loading {
@@ -427,49 +404,38 @@
       100% { transform: translateX(400%); }
     }
 
-    /* Scrollbar with gradient */
+    /* Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
-      background: #000000;
+      background: #0d0d0d;
     }
 
     ::-webkit-scrollbar-track {
-      background: -webkit-linear-gradient(left, #000000 0%, #0a0a0a 100%);
-      background: linear-gradient(90deg, #000000 0%, #0a0a0a 100%);
-      border-left: 1px solid #0d0d0d;
+      background: #0d0d0d;
     }
 
     ::-webkit-scrollbar-thumb {
-      background: -webkit-linear-gradient(left, #3a3a3a 0%, #2a2a2a 100%);
-      background: linear-gradient(90deg, #3a3a3a 0%, #2a2a2a 100%);
-      -webkit-border-radius: 4px;
+      background: #262626;
       border-radius: 4px;
-      border: 1px solid #1a1a1a;
-      -webkit-box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.1);
-      box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.1);
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: -webkit-linear-gradient(left, #444444 0%, #333333 100%);
-      background: linear-gradient(90deg, #444444 0%, #333333 100%);
+      background: #333333;
     }
 
     ::-webkit-scrollbar-thumb:active {
-      background: -webkit-linear-gradient(left, #4dc5ea 0%, #33b5e5 100%);
-      background: linear-gradient(90deg, #4dc5ea 0%, #33b5e5 100%);
-      -webkit-box-shadow: 0 0 8px rgba(51, 181, 229, 0.5);
-      box-shadow: 0 0 8px rgba(51, 181, 229, 0.5);
+      background: #4da3ff;
     }
 
     /* Mobile optimization */
     @media (max-width: 768px) {
       .stats-bar {
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 16px;
       }
     }
 
-    /* Disable animations on low-end devices */
+    /* Disable animations on low-end devices / reduced motion */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         -webkit-animation-duration: 0.01ms !important;
@@ -491,8 +457,8 @@
   <div class="header-content">
     <div class="title">The Apline Bay</div>
     <svg class="header-icon" id="searchBtn" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="10" cy="10" r="6" stroke="#ffffff" stroke-width="2"/>
-      <line x1="14.5" y1="14.5" x2="19.5" y2="19.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="10" cy="10" r="6" stroke="#f2f2f2" stroke-width="2"/>
+      <line x1="14.5" y1="14.5" x2="19.5" y2="19.5" stroke="#f2f2f2" stroke-width="2" stroke-linecap="round"/>
     </svg>
   </div>
 </header>
